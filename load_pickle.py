@@ -36,4 +36,7 @@ if __name__=='__main__':
     print(n, 'runs in: ', t2-t1)
     
     Results=store_results(a.results)
+    #Results.to_pickle('BU0')
+    #Results=pd.read_pickle('BU1')
+    
         
