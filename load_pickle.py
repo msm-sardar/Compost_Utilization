@@ -5,6 +5,7 @@ from building_matrices import *
 from CommonData import *
 from Compost_use import *
 from time import time
+from Store_results import *
 
 if __name__=='__main__':
     demo = pickle.load(open("Compost_use","rb"))
@@ -13,7 +14,9 @@ if __name__=='__main__':
     projects.set_current(project)
     db = Database("waste")
     functional_unit = {db.get("scenario1") : 1}
-    method = [('SWOLF_IPCC','SWOLF')]
+    method = [('SWOLF_IPCC','SWOLF'),('SWOLF_Acidification','SWOLF'),
+              ('SWOLF_Eutrophication','SWOLF'),('SWOLF_PhotochemicalSmog','SWOLF')
+              ,('SWOLF_CED','SWOLF')]
     
     Treatment_processes = {}
     Treatment_processes['Compost_use']={'input_type':[],'model': Compost_use()}
@@ -26,9 +29,11 @@ if __name__=='__main__':
     CommonData = CommonData()
      
     t1 = time()
-    n=100
+    n=100000
     a = ParallelData(functional_unit, method, project,process_models=process_models,process_model_names=process_model_names,common_data =CommonData ,seed = 1)
-    a.run(4,n)
+    a.run(8,n)
     t2=time()
     print(n, 'runs in: ', t2-t1)
     
+    Results=store_results(a.results)
+        

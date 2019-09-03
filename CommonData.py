@@ -60,55 +60,45 @@ class CommonData(MC):
         
 ### Land application inputs
         self.Land_app = {
-                'cmpLandDies':{"Name":"Compost application diesel use","amount":0.8,"unit":'L/Mg compost',"Reference":None},
-                'NO3runoff':{"Name":"Nitrogen runoff to surface water","amount":0.14,"unit":'kg N/kg N applied',"Reference":None},
-                'NO3leach':{"Name":"Nitrogen leaching to ground water","amount":0.135,"unit":'kg N/kg N applied',"Reference":'23'},
-                'MFEN':{"Name":"Nitrogen mineral fertilizer equivalent","amount":0.4,"unit":'kg N/kg N applied',"Reference":None},
-                'MFEP':{"Name":"Phosphorus mineral fertilizer equivalent","amount":1,"unit":'kg N/kg N applied',"Reference":None},         
-                'MFEK':{"Name":"Potassium mineral fertilizer equivalent","amount":1,"unit":'kg N/kg N applied',"Reference":None},
-                'DslAppN':{"Name":"Fertilizer - Diesel fuel for application per kg N","amount":0.00229 ,"unit":'L/kg',"Reference":None},
-                'DslAppP':{"Name":"Fertilizer - Diesel fuel for application per kg P","amount":0.00186 ,"unit":'L/kg',"Reference":None},
-                'DslAppK':{"Name":"Fertilizer - Diesel fuel for application per kg K","amount":0.00125 ,"unit":'L/kg',"Reference":None},
-                'fert_NO3Run':{"Name":"Fertilizer - Nitrate runoff to surface water","amount":10 ,"unit":'%',"Reference":None},
-                'fert_NO3Leach':{"Name":"Fertilizer - Nitrate leaching to ground water","amount":10 ,"unit":'%',"Reference":None},
-                'fert_N2O':{"Name":"Fertilizer - N released as N2O","amount":2.3 ,"unit":'%',"Reference":None},
-                'fert_NH3':{"Name":"Fertilizer - N as NH3","amount":50 ,"unit":'%',"Reference":None},
-                'fert_NH3Evap':{"Name":"Fertilizer - NH3 evaporated","amount":5 ,"unit":'%',"Reference":None}
+                'cmpLandDies':{"Name":"Compost application diesel use","amount":0.8,"unit":'L/Mg compost'},
+                
+                'NO3runoff':{"Name":"Nitrogen runoff to surface water","amount":0.14,"unit":'kg N/kg N applied',
+                             'uncertainty_type':5,'loc': 0.15 ,'minimum':0.03,'maximum':0.35},
+                
+                'NO3leach':{"Name":"Nitrogen leaching to ground water","amount":0.135,"unit":'kg N/kg N applied',
+                            'uncertainty_type':5,'loc': 0.15 ,'minimum':0.07,'maximum':0.30},
+                
+                'MFEN':{"Name":"Nitrogen mineral fertilizer equivalent","amount":0.4,"unit":'kg N/kg N applied',
+                        'uncertainty_type':5,'loc': 0.6 ,'minimum':0.2,'maximum':1},
+                
+                'MFEP':{"Name":"Phosphorus mineral fertilizer equivalent","amount":1,"unit":'kg N/kg N applied',
+                        'uncertainty_type':5,'loc': 0.9 ,'minimum':0.6,'maximum':1}, 
+                
+                'MFEK':{"Name":"Potassium mineral fertilizer equivalent","amount":1,"unit":'kg N/kg N applied',
+                        'uncertainty_type':5,'loc': 0.9 ,'minimum':0.6,'maximum':1},
+                
+                'DslAppN':{"Name":"Fertilizer - Diesel fuel for application per kg N","amount":0.00229 ,"unit":'L/kg'},
+                'DslAppP':{"Name":"Fertilizer - Diesel fuel for application per kg P","amount":0.00186 ,"unit":'L/kg'},
+                'DslAppK':{"Name":"Fertilizer - Diesel fuel for application per kg K","amount":0.00125 ,"unit":'L/kg'},
+                
+                'fert_NO3Run':{"Name":"Fertilizer - Nitrate runoff to surface water","amount":10 ,"unit":'%',
+                               'uncertainty_type':5,'loc': 8 ,'minimum':2,'maximum':12},
+                
+                'fert_NO3Leach':{"Name":"Fertilizer - Nitrate leaching to ground water","amount":10 ,"unit":'%',
+                                 'uncertainty_type':5,'loc': 10 ,'minimum':4,'maximum':16},
+                
+                'fert_N2O':{"Name":"Fertilizer - N released as N2O","amount":2.3 ,"unit":'%',
+                            'uncertainty_type':5,'loc': 1.8 ,'minimum':1.2,'maximum':2.5},
+                
+                'fert_NH3':{"Name":"Fertilizer - N as NH3","amount":50 ,"unit":'%',
+                            'uncertainty_type':5,'loc': 5 ,'minimum':0,'maximum':30},
+                
+                'fert_NH3Evap':{"Name":"Fertilizer - NH3 evaporated","amount":5 ,"unit":'%',
+                                'uncertainty_type':5,'loc': 10 ,'minimum':3,'maximum':20}
                         }
-
-#############################        
-### Waste Water Treatment ###
-############################# 
-        
-### Waste water Treatment
-        self.WWT = {
-                    'bod_rem':{"Name":"BOD Removal Efficiency","amount":97,"unit":'%',"Reference":'2'},
-                    'cod_rem':{"Name":"COD Removal Efficiency","amount":95,"unit":'%',"Reference":'5'},
-                    'tss_rem':{"Name":"TSS (Total suspended solids) Removal Efficiency","amount":96,"unit":'%',"Reference":'2'},
-                    'n_rem':{"Name":"Total Nitrogen Removal Efficiency","amount":72,"unit":'%',"Reference":'5'},
-                    'p_rem':{"Name":"Phosphate Removal Efficiency","amount":84,"unit":'%',"Reference":'5'},
-                    'metals_rem':{"Name":"Metals Removal Efficiency","amount":85,"unit":'%',"Reference":'2'}
-                    }
-
-### Leachate Treatment  (BOD Treatment)
-        self.Leachate_treat ={
-                    'ad_leachDens':{"Name":"Leachate density","amount":1,"unit":'kg/L',"Reference":None},
-                    'sludgef':{"Name":"Solid waste produced per volume of leachate","amount":1.20,"unit":'kg waste/m3 leachate',"Reference":'2'},
-                    'co2bod':{"Name":"CO2 Biomass produced per BOD removed","amount":3.60,"unit":'kg CO2b/kg BOD',"Reference":'2'},
-                    'elecBOD':{"Name":"Electricity used per mass of BOD removed","amount":0.99,"unit":'kWh/kg BOD removed',"Reference":'2'}
-                    }
-        
-        self.Organic_analysis = {
-                'choice_BU':{"Name":"Offset Beneficial Use of Compost? (0=no; 1=yes)","amount":1,"unit":None,"Reference":None},
-                'peatOff':{"Name":"Soil amendment offset peat (1) or no (0)","amount":0,"unit":None,"Reference":None},
-                'fertOff':{"Name":"Soil amendment offset fertilizer (1) or no (0)","amount":1,"unit":None,"Reference":None},
-                'perN2Oevap':{"Name":"Percent of applied N evaporated as N2O","amount":1.5,"unit":'%',"Reference":'16'},
-                'perNH3evap':{"Name":"Percent of Ammonia that evaporates","amount":15,"unit":'%',"Reference":'16'},
-                'perNasNH3fc':{"Name":"Percent N that is Ammonia","amount":50,"unit":'%',"Reference":'16'}
-                }
 
 ### Monte_carlo          
     def setup_MC(self,seed=None):
-        self.CommonData_Input_list = {'Land_app':self.Land_app, 'WWT':self.WWT, 'Leachate_treat':self.Leachate_treat,'Organic_analysis':self.Organic_analysis}
+        self.CommonData_Input_list = {'Land_app':self.Land_app}
         super().__init__(self.CommonData_Input_list)
         super().setup_MC(seed)

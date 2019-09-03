@@ -25,11 +25,10 @@ class Compost_use:
         self.LCI = pd.DataFrame(index = self.Index)
 ### Initial mass 
         self.Compost = flow()
-        self.Compost.init_flow(self.Compost_input.initflow['mass']['amount'],self.Compost_input.initflow['sol_cont']['amount'],
-                               self.Compost_input.initflow['vs_cont']['amount'],self.Compost_input.initflow['C_cont']['amount'],
+        self.Compost.init_flow(self.Compost_input,self.Compost_input.initflow['C_cont']['amount'],
                                self.Compost_input.initflow['N_cont']['amount'],self.Compost_input.initflow['P_cont']['amount'],
                                self.Compost_input.initflow['K_cont']['amount'])
-        
+
 ### Compost use
         compost_use(self.Compost,self.CommonData,self.Compost_input,self.LCI)
 ### Transportation Compost
@@ -117,12 +116,6 @@ class Compost_use:
      
         
         return(self.Compost_use )    
-
-
-
-A=Compost_use()
-A.calc()
-A.report()
 
 """
 A=AD()

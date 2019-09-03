@@ -11,19 +11,17 @@ import pandas as pd
 class flow:
     def __init__(self):
         self.Index = ['Compost']
-        self.data = pd.DataFrame(index = self.Index,columns=['mass','sol_cont','moist_cont','vs_cont','ash_cont','C_cont','N_cont','P_cont','K_cont'])
+        self.data = pd.DataFrame(index = self.Index,columns=['mass','sol_cont','moist_cont','C_cont','N_cont','P_cont','K_cont'])
 
 ### Create new flow
-    def init_flow(self,mass,S_cont,Vol_cont,C_cont,N_cont,P_cont,K_cont):
-        self.data['mass']= 1
-        self.data['sol_cont'] = S_cont
-        self.data['moist_cont'] = 1- S_cont
-        self.data['vs_cont'] = Vol_cont
-        self.data['ash_cont'] = 1- Vol_cont
-        self.data['C_cont'] = C_cont
-        self.data['N_cont'] = N_cont
-        self.data['P_cont'] = P_cont
-        self.data['K_cont'] = K_cont
+    def init_flow(self,Compost_input,C_cont,N_cont,P_cont,K_cont):
+        self.data['mass']= 1000
+        self.data['sol_cont'] = 1000 * (1-Compost_input.Material_Properties['mcFC']['amount'])
+        self.data['moist_cont'] = 1000 * Compost_input.Material_Properties['mcFC']['amount']
+        self.data['C_cont'] = C_cont * self.data['sol_cont']
+        self.data['N_cont'] = N_cont * self.data['sol_cont']
+        self.data['P_cont'] = P_cont * self.data['sol_cont']
+        self.data['K_cont'] = K_cont * self.data['sol_cont']
 ###
 def add_LCI(Name,Flow,LCI):
     if Name in LCI.columns:
