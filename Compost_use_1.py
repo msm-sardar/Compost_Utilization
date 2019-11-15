@@ -6,8 +6,8 @@ Created on Fri Aug 30 11:37:26 2019
 """
 import numpy as np
 import pandas as pd
-from Compost_input import *
-from CommonData import *
+from Compost_input_3 import *
+from CommonData_3 import *
 from stats_arrays import *
 from flow import *
 

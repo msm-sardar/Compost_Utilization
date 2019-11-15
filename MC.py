@@ -33,7 +33,7 @@ class MC():
             for x in self.sens_analysis.keys():
                 data[x] = self.sens_analysis[x][self.run_index] 
             self.run_index+=1
-            if self.run_index >= self.max_run:
+            if self.run_index > self.max_run:
                 raise ValueError('Number of runs are more than the number of defined inputs') 
         i=0
         Variables = []

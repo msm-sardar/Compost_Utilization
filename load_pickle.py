@@ -1,23 +1,30 @@
 from project_class import *
 from building_matrices import *
 import pickle
-from building_matrices import *
 from CommonData import *
 from Compost_use import *
 from time import time
 from Store_results import *
-
+from brightway2 import *
+from SWOLF_method import *
 if __name__=='__main__':
-    demo = pickle.load(open("Compost_use","rb"))
-    
+    demo = pickle.load(open("test","rb"))
+
     project = "Compost_use"
     projects.set_current(project)
     db = Database("waste")
     functional_unit = {db.get("scenario1") : 1}
-    method = [('SWOLF_IPCC','SWOLF'),('SWOLF_Acidification','SWOLF'),
-              ('SWOLF_Eutrophication','SWOLF'),('SWOLF_PhotochemicalSmog','SWOLF')
-              ,('SWOLF_CED','SWOLF')]
+    method = [('IPCC 2013, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=1, C1_36'),
+              ('IPCC 2013, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=0, C1_36'),
+              ('IPCC 2007, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=1'),
+              ('IPCC 2007, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=0'),
+              ('SWOLF_Acidification','SWOLF'),
+              ('SWOLF_Eutrophication','SWOLF'),
+              ('SWOLF_PhotochemicalSmog','SWOLF'),
+              ('SWOLF_CED','SWOLF')
+              ]
     
+    import_methods()
     Treatment_processes = {}
     Treatment_processes['Compost_use']={'input_type':[],'model': Compost_use()}
 
@@ -29,14 +36,15 @@ if __name__=='__main__':
     CommonData = CommonData()
      
     t1 = time()
-    n=100000
-    a = ParallelData(functional_unit, method, project,process_models=process_models,process_model_names=process_model_names,common_data =CommonData ,seed = 1)
+    n=20000
+    a = ParallelData(functional_unit, method, project,process_models=process_models,process_model_names=process_model_names,common_data =CommonData ,seed = 100)
     a.run(8,n)
     t2=time()
     print(n, 'runs in: ', t2-t1)
     
     Results=store_results(a.results)
-    #Results.to_pickle('BU0')
-    #Results=pd.read_pickle('BU1')
+    AAA = Results
+    #Results.to_pickle('BU1_Peat')
+    #Results=pd.read_pickle('BU1_Peat')
     
         

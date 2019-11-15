@@ -17,7 +17,7 @@ class Compost_input(MC):
                 'land_payload':{"Name":"Actual payload of truck used to haul soil amendment","amount":7.3,"unit":'Mg',"Reference":None},
                 
                 'PeatSubFac':{"Name":"Volumetric peat replacement factor","amount":0.9,"unit":None,"Reference":'17',
-                              'uncertainty_type':5,'loc': 0.9,'scale':0.2 ,'minimum':0,'maximum':1},
+                              'uncertainty_type':5,'loc': 1,'scale':0.2 ,'minimum':0,'maximum':1},
                 
                 'densPeat':{"Name":"Density of peat","amount":200,"unit":'kg/m3',"Reference":'17',
                             'uncertainty_type':5,'loc': 200, 'scale':57,'minimum':50,'maximum':500},
@@ -29,12 +29,12 @@ class Compost_input(MC):
                             'uncertainty_type':5,'loc': 0.504, 'scale':0.015,'minimum':0.45,'maximum':0.54},
                 
                 'CstorePeat':{"Name":"CstorePeat","amount":0.10,"unit":None,
-                            'uncertainty_type':3,'loc': 0.10, 'scale':0.03,'minimum':0.02,'maximum':0.16},
+                            'uncertainty_type':5,'loc': 0.10, 'scale':0.04,'minimum':0.02,'maximum':0.16},
                 
                 'perN2Oevap':{"Name":"Percent of applied N evaporated as N2O","amount":1.8,"unit":'%',
                               'uncertainty_type':5,'loc': 1.8 ,'scale':0.4,'minimum':1.2,'maximum':2.5},
                 
-                'perNH3evap':{"Name":"Percent of Ammonia that evaporates","amount":0,"unit":'%',"Reference":'16',
+                'perNH3evap':{"Name":"Percent of Ammonia that evaporates","amount":15,"unit":'%',"Reference":'16',
                               'uncertainty_type':5,'loc': 15 ,'scale':5,'minimum':5,'maximum':20},
                               
                 'perNasNH3fc':{"Name":"Percent N that is Ammonia","amount":25,"unit":'%',"Reference":'16',
@@ -52,7 +52,7 @@ class Compost_input(MC):
 ### Material Properties
         self.Material_Properties ={
             'mcFC':{'Name':'Finished compost moisture content','amount':0.45 ,'unit':'mass water/total mass','Referenc':None,
-                    'uncertainty_type':5,'loc': 0.45 ,'scale':0.09,'minimum':0.18,'maximum':0.67},
+                    'uncertainty_type':5,'loc': 0.45 ,'scale':0.09,'minimum':.18,'maximum':0.67},
             'densFC':{'Name':'Density of final compost','amount':700 ,'unit':'kg/m3','Referenc':2,
                       'uncertainty_type':5,'loc': 700 ,'scale':50,'minimum':570,'maximum':800}
             }
@@ -60,7 +60,7 @@ class Compost_input(MC):
 ### Soil Sequestration
         self.Soil_seq ={
                 'perCStor':{"Name":"Percent of carbon in finished compost remaining after 100 years","amount":10,"unit":'%'
-                            ,'uncertainty_type':5,'loc': 10 ,'scale':3,'minimum':2,'maximum':16},
+                            ,'uncertainty_type':5,'loc': 10 ,'scale':4,'minimum':2,'maximum':16},
                 'humFormFac':{"Name":"100 year carbon storage from humus formation","amount":0,"unit":'kg-C/kg-C in compost',"Reference":'4'}
                 }        
 
@@ -73,17 +73,17 @@ class Compost_input(MC):
                         }
 
 ### Landfill
-        self.Landfill ={'CH4_Collected':{"Name":"CH4_Collected","amount":61,
-                                         'uncertainty_type':3,'loc': 61 ,'scale':4,'minimum':50,'maximum':70},
+        self.Landfill ={'CH4_Collected':{"Name":"CH4_Collected","amount":50,
+                                         'uncertainty_type':5,'loc': 50 ,'scale':10,'minimum':30,'maximum':75},
         
-                        'Frac_oxidized':{"Name":"Frac_oxidized","amount":0.16,
-                                         'uncertainty_type':3,'loc': 0.16,'scale':0.035,'minimum':0.10,'maximum':0.26},
+                        'Frac_oxidized':{"Name":"Frac_oxidized","amount":0.2,
+                                         'uncertainty_type':5,'loc': 0.2 ,'scale':0.05,'minimum':0.10,'maximum':0.30},
                                          
-                        'Frac_flared':{"Name":"Frac_flared","amount":0.34,
-                                       'uncertainty_type':3,'loc': 0.34 , 'scale':0.132,'minimum':0.13,'maximum':0.62},
+                        'Frac_flared':{"Name":"Frac_flared","amount":0.35,
+                                       'uncertainty_type':5,'loc': 0.35 , 'scale':0.10,'minimum':0.15,'maximum':0.70},
                                        
-                        'percCStor_LF':{"Name":"Percent of carbon in compost remaining after 100 years","amount":85,"unit":'%'
-                                        ,'uncertainty_type':3,'loc':85,'scale':5,'minimum':72,'maximum':96},
+                        'percCStor_LF':{"Name":"Percent of carbon in compost remaining after 100 years","amount":70,"unit":'%'
+                                        ,'uncertainty_type':5,'loc': 70 ,'scale':20,'minimum':40,'maximum':100},
                                         
                         'Elec_eff':{"Name":"Elec_eff in LF","amount":0.36,"unit":None
                                         ,'uncertainty_type':5,'loc': 0.36 ,'scale':0.03,'minimum':0.28,'maximum':0.42},
@@ -94,7 +94,7 @@ class Compost_input(MC):
                                         ,'uncertainty_type':5,'loc': 0.5 ,'scale':0.02,'minimum':0.45,'maximum':0.55},
                         
                         'DC_subs_fac':{'Name':'DC_subs_fac','amount':0.9,'unit':'frac',
-                                       'uncertainty_type':5,'loc': 0.9 ,'scale':0.2,'minimum':0,'maximum':1},
+                                       'uncertainty_type':5,'loc': 1 ,'scale':0.2,'minimum':0,'maximum':1},
                        
                         'Soil_dens':{'Name':'Soil_dens','amount':1600,'unit':'kg/m3',
                                       'uncertainty_type':5,'loc': 1600 ,'scale':50,'minimum':1500,'maximum':1700},
@@ -108,7 +108,7 @@ class Compost_input(MC):
 ### Monte_carlo          
     def setup_MC(self,seed=None):
         self.Compost_Input_list = {'Land_app':self.Land_app,'operation':self.operation,'Material_Properties':self.Material_Properties,
-                                  'Soil_seq':self.Soil_seq,'initflow':self.initflow,'Lanfill':self.Landfill}
+                                   'Soil_seq':self.Soil_seq,'initflow':self.initflow,'Lanfill':self.Landfill}
         super().__init__(self.Compost_Input_list)
         super().setup_MC(seed)
     

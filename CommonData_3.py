@@ -62,39 +62,29 @@ class CommonData(MC):
         self.Land_app = {
                 'cmpLandDies':{"Name":"Compost application diesel use","amount":0.8,"unit":'L/Mg compost'},
                 
-                'NO3runoff':{"Name":"Nitrogen runoff to surface water","amount":0.15,"unit":'kg N/kg N applied',
-                             'uncertainty_type':5,'loc': 0.15 ,'scale':0.05,'minimum':0.0,'maximum':0.30},
+                'NO3runoff':{"Name":"Nitrogen runoff to surface water","amount":0.15,"unit":'kg N/kg N applied'},
                 
-                'NO3leach':{"Name":"Nitrogen leaching to ground water","amount":0.20,"unit":'kg N/kg N applied',
-                            'uncertainty_type':5,'loc': 0.20 ,'scale':0.15,'minimum':0.07,'maximum':0.60},
+                'NO3leach':{"Name":"Nitrogen leaching to ground water","amount":0.20,"unit":'kg N/kg N applied'},
                 
-                'MFEN':{"Name":"Nitrogen mineral fertilizer equivalent","amount":0.6,"unit":'kg N/kg N applied',
-                        'uncertainty_type':4 ,'minimum':0.2,'maximum':0.8},
+                'MFEN':{"Name":"Nitrogen mineral fertilizer equivalent","amount":0.6,"unit":'kg N/kg N applied'},
                 
-                'MFEP':{"Name":"Phosphorus mineral fertilizer equivalent","amount":0.9,"unit":'kg N/kg N applied',
-                        'uncertainty_type':4,'minimum':0.6,'maximum':1}, 
+                'MFEP':{"Name":"Phosphorus mineral fertilizer equivalent","amount":0.9,"unit":'kg N/kg N applied'}, 
                 
-                'MFEK':{"Name":"Potassium mineral fertilizer equivalent","amount":0.9,"unit":'kg N/kg N applied',
-                        'uncertainty_type':4,'minimum':0.6,'maximum':1},
+                'MFEK':{"Name":"Potassium mineral fertilizer equivalent","amount":0.9,"unit":'kg N/kg N applied'},
                 
                 'DslAppN':{"Name":"Fertilizer - Diesel fuel for application per kg N","amount":0.00229 ,"unit":'L/kg'},
                 'DslAppP':{"Name":"Fertilizer - Diesel fuel for application per kg P","amount":0.00186 ,"unit":'L/kg'},
                 'DslAppK':{"Name":"Fertilizer - Diesel fuel for application per kg K","amount":0.00125 ,"unit":'L/kg'},
                 
-                'fert_NO3Run':{"Name":"Fertilizer - Nitrate runoff to surface water","amount":10 ,"unit":'%',
-                               'uncertainty_type':5,'loc': 10,'scale':10 ,'minimum':5,'maximum':40},
+                'fert_NO3Run':{"Name":"Fertilizer - Nitrate runoff to surface water","amount":10 ,"unit":'%'},
                 
-                'fert_NO3Leach':{"Name":"Fertilizer - Nitrate leaching to ground water","amount":10 ,"unit":'%',
-                                 'uncertainty_type':5,'loc': 10,'scale':10 ,'minimum':5,'maximum':40},
+                'fert_NO3Leach':{"Name":"Fertilizer - Nitrate leaching to ground water","amount":10 ,"unit":'%'},
                 
-                'fert_N2O':{"Name":"Fertilizer - N released as N2O","amount":1.8 ,"unit":'%',
-                            'uncertainty_type':5,'loc': 1.8 ,'scale':0.04,'minimum':1.2,'maximum':2.5},
+                'fert_N2O':{"Name":"Fertilizer - N released as N2O","amount":1.8 ,"unit":'%'},
                 
-                'fert_NH3':{"Name":"Fertilizer - N as NH3","amount":25 ,"unit":'%',
-                            'uncertainty_type':5,'loc': 25 ,'scale':10,'minimum':1,'maximum':50},
+                'fert_NH3':{"Name":"Fertilizer - N as NH3","amount":25 ,"unit":'%'},
                 
-                'fert_NH3Evap':{"Name":"Fertilizer - NH3 evaporated","amount":5 ,"unit":'%',
-                                'uncertainty_type':5,'loc': 5,'scale':1,'minimum':3,'maximum':7}
+                'fert_NH3Evap':{"Name":"Fertilizer - NH3 evaporated","amount":5 ,"unit":'%'}
                         }
 
 ### Monte_carlo          
