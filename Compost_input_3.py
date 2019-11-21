@@ -35,7 +35,7 @@ class Compost_input(MC):
         
 ### Facility Operation
         self.operation = {
-                'choice_BU':{'Name':'Digestate Beneficial Use (1) or No Beneficial Use (0)','amount':0,'unit':'0/1','Referenc':None},
+                'choice_BU':{'Name':'Digestate Beneficial Use (1) or No Beneficial Use (0)','amount':1,'unit':'0/1','Referenc':None},
                 'peatOff':{'Name':'Digestate Beneficial Use offsets Peat (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
                 'fertOff':{'Name':'Digestate Beneficial Use offsets Fertilizer (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
                 'allocation_ADC':{'Name':'Allocation factor of LF material use to ADC','amount':0.5,'unit':'frac'}}
@@ -54,8 +54,8 @@ class Compost_input(MC):
 
 ### Initial flow
         self.initflow ={'mass':{"Name":"mass","amount":1000},
-                        'C_cont':{"Name":"C_cont","amount":0.30}, 
-                        'N_cont':{"Name":"N_cont","amount":0.015},
+                        'C_cont':{"Name":"C_cont","amount":0.30},
+                        'N_cont':{"Name":"N_cont","amount":0.015,'list':np.repeat(np.linspace(0.0051,0.028,10),10)},
                         'P_cont':{"Name":"P_cont","amount":0.005},
                         'K_cont':{"Name":"K_cont","amount":0.01}
                         }
@@ -67,7 +67,7 @@ class Compost_input(MC):
                                          
                         'Frac_flared':{"Name":"Frac_flared","amount":0.31},
                                        
-                        'percCStor_LF':{"Name":"Percent of carbon in compost remaining after 100 years","amount":90,"unit":'%','list': np.linspace(80,100,10)},
+                        'percCStor_LF':{"Name":"Percent of carbon in compost remaining after 100 years","amount":90,"unit":'%'},
                                         
                         'Elec_eff':{"Name":"Elec_eff in LF","amount":0.30,"unit":None},
                                     

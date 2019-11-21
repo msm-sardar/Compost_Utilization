@@ -35,7 +35,7 @@ class Compost_input(MC):
                               'uncertainty_type':4,'minimum':1.3,'maximum':2.2},
                 
                 'perNH3evap':{"Name":"Percent of Ammonia that evaporates","amount":15,"unit":'%',"Reference":'16',
-                              'uncertainty_type':5,'loc':15,'minimum':10,'maximum':30},
+                              'uncertainty_type':5,'loc':15,'minimum':10,'maximum':20},
                               
                 'perNasNH3fc':{"Name":"Percent N that is Ammonia","amount":25,"unit":'%',"Reference":'16',
                                'uncertainty_type':4,'minimum':1,'maximum':50},
@@ -45,7 +45,7 @@ class Compost_input(MC):
         self.operation = {
                 'choice_BU':{'Name':'Digestate Beneficial Use (1) or No Beneficial Use (0)','amount':1,'unit':'0/1','Referenc':None},
                 'peatOff':{'Name':'Digestate Beneficial Use offsets Peat (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
-                'fertOff':{'Name':'Digestate Beneficial Use offsets Fertilizer (1 - Yes; 0 - No)','amount':0,'unit':'0/1','Referenc':None},
+                'fertOff':{'Name':'Digestate Beneficial Use offsets Fertilizer (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
                 'allocation_ADC':{'Name':'Allocation factor of LF material use to ADC','amount':0.5,'unit':'frac',
                                   'uncertainty_type':4,'minimum':0,'maximum':1}}
 

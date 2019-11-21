@@ -62,11 +62,11 @@ class CommonData(MC):
         self.Land_app = {
                 'cmpLandDies':{"Name":"Compost application diesel use","amount":0.8,"unit":'L/Mg compost'},
                 
-                'NO3runoff':{"Name":"Nitrogen runoff to surface water","amount":0.15,"unit":'kg N/kg N applied'},
+                'NO3':{"Name":"Fraction of N content that is emitted as NO3 ","amount":0.20,"unit":None},
                 
-                'NO3leach':{"Name":"Nitrogen leaching to ground water","amount":0.20,"unit":'kg N/kg N applied'},
+                'frac_gw':{"Name":"Fraction of NO3 that is emitted to groundwater","amount":0.50,"unit":None},
                 
-                'MFEN':{"Name":"Nitrogen mineral fertilizer equivalent","amount":0.6,"unit":'kg N/kg N applied'},
+                'MFEN':{"Name":"Nitrogen mineral fertilizer equivalent","amount":0.6,"unit":'kg N/kg N applied','list':np.linspace(0,1,10).tolist()*10},
                 
                 'MFEP':{"Name":"Phosphorus mineral fertilizer equivalent","amount":0.9,"unit":'kg N/kg N applied'}, 
                 
@@ -76,15 +76,13 @@ class CommonData(MC):
                 'DslAppP':{"Name":"Fertilizer - Diesel fuel for application per kg P","amount":0.00186 ,"unit":'L/kg'},
                 'DslAppK':{"Name":"Fertilizer - Diesel fuel for application per kg K","amount":0.00125 ,"unit":'L/kg'},
                 
-                'fert_NO3Run':{"Name":"Fertilizer - Nitrate runoff to surface water","amount":10 ,"unit":'%'},
+                'R_NO3':{"Name":"Ratio of NO3 emission from fertilizer to compost ","amount":0.50 ,"unit":None},
                 
-                'fert_NO3Leach':{"Name":"Fertilizer - Nitrate leaching to ground water","amount":10 ,"unit":'%'},
                 
-                'fert_N2O':{"Name":"Fertilizer - N released as N2O","amount":1.8 ,"unit":'%'},
+                'R_N2O':{"Name":"Ratio of N2O emission from fertilizer to compost","amount":0.60 ,"unit":None},
                 
-                'fert_NH3':{"Name":"Fertilizer - N as NH3","amount":25 ,"unit":'%'},
+                'R_NH3':{"Name":"Ratio of NH3 emission from fertilizer to compost","amount":0.25 ,"unit":None },
                 
-                'fert_NH3Evap':{"Name":"Fertilizer - NH3 evaporated","amount":5 ,"unit":'%'}
                         }
 
 ### Monte_carlo          

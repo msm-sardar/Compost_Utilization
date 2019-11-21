@@ -42,8 +42,8 @@ def compost_use(input,CommonData,Compost_input,LCI):
         #Nitrogen in final compost
         N2O = input.data['N_cont'] * Compost_input.Land_app['perN2Oevap']['amount']/100 
         NH3 = input.data['N_cont'] * Compost_input.Land_app['perNasNH3fc']['amount']/100 * Compost_input.Land_app['perNH3evap']['amount']/100
-        NO3_GW = input.data['N_cont'] * CommonData.Land_app['NO3leach']['amount'] 
-        FNO3_SW = input.data['N_cont'] * CommonData.Land_app['NO3runoff']['amount'] 
+        NO3_GW = input.data['N_cont'] * CommonData.Land_app['NO3']['amount'] * CommonData.Land_app['frac_gw']['amount'] 
+        FNO3_SW = input.data['N_cont'] * CommonData.Land_app['NO3']['amount'] *(1-CommonData.Land_app['frac_gw']['amount'] )
         
         add_LCI('Dinitrogen monoxide', N2O * CommonData.MW['Nitrous_Oxide']['amount']/CommonData.MW['N']['amount']/2 ,LCI)
         add_LCI('Ammonia',NH3 * CommonData.MW['Ammonia']['amount']/CommonData.MW['N']['amount'] ,LCI)
@@ -69,10 +69,10 @@ def compost_use(input,CommonData,Compost_input,LCI):
             add_LCI(('Technosphere', 'Potassium_Fertilizer'), -Kavail ,LCI)
             
             # offset from applying fertilizer
-            Fert_N2O = -Navail * CommonData.Land_app['fert_N2O']['amount']/100 
-            Fert_NH3 = -Navail * CommonData.Land_app['fert_NH3']['amount']/100 * CommonData.Land_app['fert_NH3Evap']['amount']/100
-            Fert_NO3_GW = -Navail * CommonData.Land_app['fert_NO3Leach']['amount'] /100
-            Fert_NO3_SW = -Navail * CommonData.Land_app['fert_NO3Run']['amount'] / 100
+            Fert_N2O = -Navail * Compost_input.Land_app['perN2Oevap']['amount']/100  * CommonData.Land_app['R_N2O']['amount']
+            Fert_NH3 = -Navail * Compost_input.Land_app['perNasNH3fc']['amount']/100 * Compost_input.Land_app['perNH3evap']['amount']/100 * CommonData.Land_app['R_NH3']['amount']
+            Fert_NO3_GW = -Navail * CommonData.Land_app['NO3']['amount'] * CommonData.Land_app['frac_gw']['amount'] * CommonData.Land_app['R_NO3']['amount']
+            Fert_NO3_SW = -Navail * CommonData.Land_app['NO3']['amount'] *(1-CommonData.Land_app['frac_gw']['amount'] ) *CommonData.Land_app['R_NO3']['amount']
             
             add_LCI('Dinitrogen monoxide', Fert_N2O * CommonData.MW['Nitrous_Oxide']['amount']/CommonData.MW['N']['amount']/2 ,LCI)
             add_LCI('Ammonia',Fert_NH3 * CommonData.MW['Ammonia']['amount']/CommonData.MW['N']['amount'] ,LCI)
@@ -82,19 +82,27 @@ def compost_use(input,CommonData,Compost_input,LCI):
         if Compost_input.operation['peatOff']['amount'] == 1:
             Peat = input.data['mass']/Compost_input.Material_Properties['densFC']['amount'] * Compost_input.Land_app['densPeat']['amount'] / 1000 \
                     * Compost_input.Land_app['PeatSubFac']['amount']
-            add_LCI(('Technosphere', 'Peat'), -Peat ,LCI)  
+            Peat_C_release = Peat*1000*(1-Compost_input.Land_app['moistPeat']['amount'])*Compost_input.Land_app['CContPeat']['amount']*(1-Compost_input.Land_app['CstorePeat']['amount'])
+            
+            add_LCI(('Technosphere', 'Peat'), -Peat ,LCI)
+            add_LCI('Carbon dioxide, fossil', -Peat_C_release * CommonData.MW['CO2']['amount']/CommonData.MW['C']['amount'] ,LCI)
+        
+            if Compost_input.operation['fertOff']['amount'] == 0:
+                Peat_N =  Peat * (1-43.6/100)*1/100 * 1000
+                Peat_NO3_GW = -Peat_N *CommonData.Land_app['NO3']['amount']
+                add_LCI('Nitrate (ground water)',Peat_NO3_GW * CommonData.MW['Nitrate']['amount']/CommonData.MW['N']['amount'] ,LCI)
     
     if Compost_input.operation['choice_BU']['amount'] == 0:
         # Carbon in final compost
         C_storage = input.data['C_cont'] * Compost_input.Landfill['percCStor_LF']['amount']/100
         
-        C_released = (input.data['C_cont'] - C_storage)/2
-        C_CH4 = (input.data['C_cont'] - C_storage)/2
+        C_released = (input.data['C_cont'] - C_storage) * (1-Compost_input.Landfill['frac_CH4']['amount'])
+        C_CH4 = (input.data['C_cont'] - C_storage) * Compost_input.Landfill['frac_CH4']['amount']
         C_CH4_Oxidized = C_CH4 * Compost_input.Landfill['Frac_oxidized']['amount'] * (1-Compost_input.Landfill['CH4_Collected']['amount'] /100)
         C_CH4_Flared = C_CH4 * Compost_input.Landfill['CH4_Collected']['amount'] /100 * Compost_input.Landfill['Frac_flared']['amount']
         C_CH4_Emitted = C_CH4 * (1-Compost_input.Landfill['Frac_oxidized']['amount']) * (1-Compost_input.Landfill['CH4_Collected']['amount'] /100)
         C_CH4_EnergyRec = C_CH4 * Compost_input.Landfill['CH4_Collected']['amount'] /100 * (1-Compost_input.Landfill['Frac_flared']['amount'])
-        C_CH4_Electricity = C_CH4_EnergyRec*CommonData.MW['CH4']['amount']/CommonData.MW['C']['amount']*50/3.6  # LHV of Methane: 50 MJ/kg
+        C_CH4_Electricity = C_CH4_EnergyRec*CommonData.MW['CH4']['amount']/CommonData.MW['C']['amount']*Compost_input.Landfill['CH4_LHV']['amount']/3.6 * Compost_input.Landfill['Elec_eff']['amount']  # LHV of Methane: 50 MJ/kg
                 
         add_LCI('Carbon dioxide, non-fossil storage', -(C_storage) * CommonData.MW['CO2']['amount']/CommonData.MW['C']['amount'] ,LCI)
         add_LCI('Carbon dioxide, non-fossil', (C_released+C_CH4_EnergyRec+C_CH4_Flared+C_CH4_Oxidized) * CommonData.MW['CO2']['amount']/CommonData.MW['C']['amount'] ,LCI)
@@ -102,11 +110,19 @@ def compost_use(input,CommonData,Compost_input,LCI):
         add_LCI(('Technosphere', 'Electricity_production'), C_CH4_Electricity ,LCI)
         
         #General emissions from LF
-        add_LCI(('Technosphere', 'compost_to_LF'), input.data['mass'] /1000 ,LCI)
+        add_LCI(('Technosphere', 'compost_to_LF'), input.data['mass'] /1000 * Compost_input.operation['allocation_ADC']['amount'] ,LCI)
         
         #Amomonium emission from LF (Calculated base on the ammomium/N_cont ratio in LF)
         NH4_GW= 0.0051/100 * input.data['N_cont']
         NH4_SW= 0.3597/100 * input.data['N_cont']
         add_LCI('Ammonium, ion (ground water)', NH4_GW * CommonData.MW['Ammonium']['amount']/CommonData.MW['N']['amount'] ,LCI)
         add_LCI('Ammonium, ion (surface water)', NH4_SW * CommonData.MW['Ammonium']['amount']/CommonData.MW['N']['amount'] ,LCI)
- 
+        
+        #Avoided excavation
+        
+        avoided_excav =input.data['mass']/Compost_input.Material_Properties['densFC']['amount']/Compost_input.Landfill['ADC_thickness']['amount']* \
+                        Compost_input.Landfill['DC_thickness']['amount']*Compost_input.Landfill['DC_subs_fac']['amount']
+        add_LCI('market_for_excavation_skid_steer_loader',avoided_excav,LCI)
+        
+        
+        
