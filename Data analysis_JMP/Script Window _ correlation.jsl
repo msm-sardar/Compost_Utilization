@@ -1,0 +1,123 @@
+﻿
+Graph Builder(
+	Size( 897, 667 ),
+	Show Control Panel( 0 ),
+	Variables(
+		X( :Name( "∆ GWP" ) ),
+		X( :Name( "∆ Acidification" ) ),
+		X( :Name( "∆ Eutrophication" ) ),
+		X( :Name( "∆ CED" ) ),
+		X( :sum_abs ),
+		Y( :Column 2, Order By( :sum_abs, Ascending, Order Statistic( "Mean" ) ) )
+	),
+	Elements( Position( 1, 1 ), Bar( X, Y, Legend( 94 ) ) ),
+	Elements( Position( 2, 1 ), Bar( X, Y, Legend( 95 ) ) ),
+	Elements( Position( 3, 1 ), Bar( X, Y, Legend( 96 ) ) ),
+	Elements( Position( 4, 1 ), Bar( X, Y, Legend( 97 ) ) ),
+	Elements( Position( 5, 1 ), Bar( X, Y, Legend( 98 ) ) ),
+	SendToReport(
+		Dispatch(
+			{},
+			"∆ GWP",
+			ScaleBox,
+			{Min( -1 ), Max( 1 ), Inc( 0.5 ), Minor Ticks( 0 ),
+			Label Row( Set Font Size( 10 ) )}
+		),
+		Dispatch(
+			{},
+			"∆ Acidification",
+			ScaleBox,
+			{Min( -1 ), Max( 1 ), Inc( 0.5 ), Minor Ticks( 0 ),
+			Label Row( Set Font Size( 10 ) )}
+		),
+		Dispatch(
+			{},
+			"∆ Eutrophication",
+			ScaleBox,
+			{Min( -1 ), Max( 1 ), Inc( 0.5 ), Minor Ticks( 0 ),
+			Label Row( Set Font Size( 10 ) )}
+		),
+		Dispatch(
+			{},
+			"∆ CED",
+			ScaleBox,
+			{Min( -1 ), Max( 1 ), Inc( 0.5 ), Minor Ticks( 0 ),
+			Label Row( Set Font Size( 10 ) )}
+		),
+		Dispatch(
+			{},
+			"sum_abs",
+			ScaleBox,
+			{Min( -0.0115384615384615 ), Max( 1.18846153846154 ), Inc( 0.2 ),
+			Minor Ticks( 0 )}
+		),
+		Dispatch(
+			{},
+			"Column 2",
+			ScaleBox,
+			{Label Row(
+				{Set Font Size( 10 ), Tick Mark(
+					Label( "Land_app_MFEN" ),
+					Label( "MFEN" )
+				), Tick Mark(
+					Label( "Land_app_NO3" ),
+					Label( "Fraction of N as NO3" )
+				), Tick Mark(
+					Label( "Land_app_PeatSubFac" ),
+					Label( "Peat substitution factor" )
+				), Tick Mark(
+					Label( "Land_app_densPeat" ),
+					Label( "Peat density" )
+				), Tick Mark(
+					Label( "Land_app_perNH3evap" ),
+					Label( "Fraction of NH3 evaporated" )
+				), Tick Mark(
+					Label( "Land_app_perNasNH3fc" ),
+					Label( "Fraction of N as liquid NH3" )
+				), Tick Mark(
+					Label( "Lanfill_percCStor_LF" ),
+					Label( "Landfill C storage" )
+				), Tick Mark(
+					Label( "Material_Properties_densFC" ),
+					Label( "Compost density" )
+				), Tick Mark(
+					Label( "Material_Properties_mcFC" ),
+					Label( "Compost moisture content" )
+				), Tick Mark(
+					Label( "Soil_seq_perCStor" ),
+					Label( "Soil C storage" )
+				), Tick Mark(
+					Label( "initflow_C_cont" ),
+					Label( "Compost C content" )
+				), Tick Mark(
+					Label( "initflow_N_cont" ),
+					Label( "Compost N content" )
+				)}
+			)}
+		),
+		Dispatch(
+			{},
+			"X title",
+			TextEditBox,
+			{Set Font Size( 10 ), Set Text( "∆ GWP of scenarios" )}
+		),
+		Dispatch(
+			{},
+			"X 1 title",
+			TextEditBox,
+			{Set Font Size( 10 ), Set Text( "∆ Acidification of scenarios" )}
+		),
+		Dispatch(
+			{},
+			"X 2 title",
+			TextEditBox,
+			{Set Font Size( 10 ), Set Text( "∆ Eutrophication of scenarios" )}
+		),
+		Dispatch(
+			{},
+			"X 3 title",
+			TextEditBox,
+			{Set Font Size( 10 ), Set Text( "∆ CED of scenarios" )}
+		)
+	)
+);
