@@ -1,8 +1,5 @@
-===========================================================================
-How Desirable Is It to Use Compost as Alternative Daily Cover in Landfills? 
-===========================================================================
 
-.. image:: ./Figures/Poster.jpg
+.. image:: ./Figures/EWC_Poster_2020.png
 
 
 
