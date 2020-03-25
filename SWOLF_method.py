@@ -6,7 +6,7 @@ Created on Thu Apr  4 14:41:00 2019
 """
 import pandas as pd
 from brightway2 import *
-from biosphere_keys import *
+from Required_keys import *
 def import_methods():
     keys = biosphere_keys
     
@@ -22,7 +22,7 @@ def import_methods():
     ### Add the Characterization factors to the SWOLF_IPPC.csv file from the SWOLF and read it again to have characterization factors
     
     
-    Data = pd.read_csv("SWOLF _ IPPC.csv")
+    Data = pd.read_csv("SWOLF _ ImpactMethods.csv")
     
     SWOLF_IPCC = []
     SWOLF_Acidification = []
