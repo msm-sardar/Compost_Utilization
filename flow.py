@@ -62,7 +62,7 @@ def compost_use(input,CommonData,Compost_input,LCI):
             add_LCI(('Technosphere', 'Equipment_Diesel'), Diesel_use ,LCI)
             
             # Offset from fertilizer
-            Diesel_offset = -(Navail*CommonData.Land_app['DslAppN']['amount']+Pavail*CommonData.Land_app['DslAppP']['amount']+Kavail*CommonData.Land_app['DslAppK']['amount'])
+            Diesel_offset = -(Navail*CommonData.Land_app['DslAppN']['amount']/1000+Pavail*CommonData.Land_app['DslAppP']['amount']/1000+Kavail*CommonData.Land_app['DslAppK']['amount']/1000)
             add_LCI(('Technosphere', 'Equipment_Diesel'), Diesel_offset ,LCI)
             add_LCI(('Technosphere', 'Nitrogen_Fertilizer'), -Navail ,LCI)
             add_LCI(('Technosphere', 'Phosphorous_Fertilizer'), -Pavail ,LCI)
