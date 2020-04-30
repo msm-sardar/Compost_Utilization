@@ -77,9 +77,9 @@ class CommonData(MC):
                 'MFEK':{"Name":"Potassium mineral fertilizer equivalent","amount":0.9,"unit":'kg N/kg N applied',
                         'uncertainty_type':4,'minimum':0.8,'maximum':1},
                 
-                'DslAppN':{"Name":"Fertilizer - Diesel fuel for application per kg N","amount":0.00229 ,"unit":'L/kg'},
-                'DslAppP':{"Name":"Fertilizer - Diesel fuel for application per kg P","amount":0.00186 ,"unit":'L/kg'},
-                'DslAppK':{"Name":"Fertilizer - Diesel fuel for application per kg K","amount":0.00125 ,"unit":'L/kg'},
+                'DslAppN':{"Name":"Fertilizer - Diesel fuel for application per kg N","amount":2.29 ,"unit":'L/Mg'},
+                'DslAppP':{"Name":"Fertilizer - Diesel fuel for application per kg P","amount":1.86 ,"unit":'L/Mg'},
+                'DslAppK':{"Name":"Fertilizer - Diesel fuel for application per kg K","amount":1.25 ,"unit":'L/Mg'},
                 
                 'R_NO3':{"Name":"Ratio of NO3 emission from fertilizer to compost ","amount":0.50 ,"unit":None,
                                'uncertainty_type':4 ,'minimum':0.35,'maximum':.70},
