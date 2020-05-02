@@ -12,9 +12,9 @@ class Compost_input(MC):
 
 ### Land application inputs
         self.Land_app = {
-                'distLand':{"Name":"Distance to application site","amount":20,"unit":'km',"Reference":None},
-                'erLand':{"Name":"Empty return from land application (0=no; 1=yes)","amount":1,"unit":'0/1',"Reference":None},
-                'land_payload':{"Name":"Actual payload of truck used to haul soil amendment","amount":7.3,"unit":'Mg',"Reference":None},
+                #'distLand':{"Name":"Distance to application site","amount":20,"unit":'km',"Reference":None},
+                #'erLand':{"Name":"Empty return from land application (0=no; 1=yes)","amount":1,"unit":'0/1',"Reference":None},
+                #'land_payload':{"Name":"Actual payload of truck used to haul soil amendment","amount":7.3,"unit":'Mg',"Reference":None},
                 
                 'PeatSubFac':{"Name":"Volumetric peat replacement factor","amount":0.9,"unit":None,"Reference":'17',
                               'uncertainty_type':5,'loc':0.8,'minimum':0.22,'maximum':1},
@@ -43,9 +43,9 @@ class Compost_input(MC):
         
 ### Facility Operation
         self.operation = {
-                'choice_BU':{'Name':'Digestate Beneficial Use (1) or No Beneficial Use (0)','amount':0,'unit':'0/1','Referenc':None},
+                'choice_BU':{'Name':'Digestate Beneficial Use (1) or No Beneficial Use (0)','amount':1,'unit':'0/1','Referenc':None},
                 'peatOff':{'Name':'Digestate Beneficial Use offsets Peat (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
-                'fertOff':{'Name':'Digestate Beneficial Use offsets Fertilizer (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
+                'fertOff':{'Name':'Digestate Beneficial Use offsets Fertilizer (1 - Yes; 0 - No)','amount':0,'unit':'0/1','Referenc':None},
                 'allocation_ADC':{'Name':'Allocation factor of LF material use to ADC','amount':0.5,'unit':'frac',
                                   'uncertainty_type':4,'minimum':0,'maximum':1}}
 
@@ -99,9 +99,17 @@ class Compost_input(MC):
                         'Soil_dens':{'Name':'Soil_dens','amount':1600,'unit':'kg/m3',
                                       'uncertainty_type':5,'loc': 1600 ,'minimum':1400,'maximum':1800},
                                      
-                        'DC_thickness':{'Name':'DC_thickness','amount':15,'unit':'cm'},
+                        'DC_thickness':{'Name':'DC_thickness','amount':15,'unit':'cm',
+                                        'uncertainty_type':2,'loc': 2.7081, 'scale':0.0245},
                         
-                        'ADC_thickness':{'Name':'ADC_thickness','amount':22.5,'unit':'cm'}       
+                        'ADC_thickness':{'Name':'ADC_thickness','amount':22.5,'unit':'cm',
+                                         'uncertainty_type':2,'loc': 3.2189, 'scale':0.1150},
+                        
+                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000051,'unit':'fraction',
+                                         'uncertainty_type':2,'loc': -9.8837, 'scale':0.2093},
+                        
+                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.003597,'unit':'fraction',
+                                         'uncertainty_type':2,'loc': -5.6277, 'scale':0.2093},
                         
                         }
 

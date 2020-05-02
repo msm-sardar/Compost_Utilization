@@ -60,7 +60,8 @@ class CommonData(MC):
         
 ### Land application inputs
         self.Land_app = {
-                'cmpLandDies':{"Name":"Compost application diesel use","amount":0.8,"unit":'L/Mg compost'},
+                'cmpLandDies':{"Name":"Compost application diesel use","amount":0.8,"unit":'L/Mg compost',
+                               'uncertainty_type':2,'loc': -0.22314, 'scale':0.1860},
                 
                 'NO3':{"Name":"Fraction of N content that is emitted as NO3 ","amount":0.20,"unit":None,
                              'uncertainty_type':4,'minimum':0.03,'maximum':0.87},
@@ -77,9 +78,14 @@ class CommonData(MC):
                 'MFEK':{"Name":"Potassium mineral fertilizer equivalent","amount":0.9,"unit":'kg N/kg N applied',
                         'uncertainty_type':4,'minimum':0.8,'maximum':1},
                 
-                'DslAppN':{"Name":"Fertilizer - Diesel fuel for application per kg N","amount":2.29 ,"unit":'L/Mg'},
-                'DslAppP':{"Name":"Fertilizer - Diesel fuel for application per kg P","amount":1.86 ,"unit":'L/Mg'},
-                'DslAppK':{"Name":"Fertilizer - Diesel fuel for application per kg K","amount":1.25 ,"unit":'L/Mg'},
+                'DslAppN':{"Name":"Fertilizer - Diesel fuel for application per kg N","amount":2.29 ,"unit":'L/Mg',
+                           'uncertainty_type':2,'loc': 0.82855, 'scale':0.1860},
+                           
+                'DslAppP':{"Name":"Fertilizer - Diesel fuel for application per kg P","amount":1.86 ,"unit":'L/Mg',
+                           'uncertainty_type':2,'loc': 0.62058, 'scale':0.1860},
+                           
+                'DslAppK':{"Name":"Fertilizer - Diesel fuel for application per kg K","amount":1.25 ,"unit":'L/Mg',
+                           'uncertainty_type':2,'loc': 0.22314, 'scale':0.1860},
                 
                 'R_NO3':{"Name":"Ratio of NO3 emission from fertilizer to compost ","amount":0.50 ,"unit":None,
                                'uncertainty_type':4 ,'minimum':0.35,'maximum':.70},

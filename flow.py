@@ -113,8 +113,8 @@ def compost_use(input,CommonData,Compost_input,LCI):
         add_LCI(('Technosphere', 'compost_to_LF'), input.data['mass'] /1000 * Compost_input.operation['allocation_ADC']['amount'] ,LCI)
         
         #Amomonium emission from LF (Calculated base on the ammomium/N_cont ratio in LF)
-        NH4_GW= 0.0051/100 * input.data['N_cont']
-        NH4_SW= 0.3597/100 * input.data['N_cont']
+        NH4_GW=  Compost_input.Landfill['Frac_NH4_GW']['amount']* input.data['N_cont']
+        NH4_SW=  Compost_input.Landfill['Frac_NH4_SW']['amount']* input.data['N_cont']
         add_LCI('Ammonium, ion (ground water)', NH4_GW * CommonData.MW['Ammonium']['amount']/CommonData.MW['N']['amount'] ,LCI)
         add_LCI('Ammonium, ion (surface water)', NH4_SW * CommonData.MW['Ammonium']['amount']/CommonData.MW['N']['amount'] ,LCI)
         
