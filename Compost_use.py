@@ -32,8 +32,8 @@ class Compost_use:
 ### Compost use
         compost_use(self.Compost,self.CommonData,self.Compost_input,self.LCI)
 ### Transportation Compost
-        add_LCI('Full_Medium-duty truck transport of compost to land application', self.Compost.data['mass'] * self.Compost_input.Land_app['distLand']['amount'] ,self.LCI)
-        add_LCI('Empty_Medium-duty truck transport return from land application', self.Compost.data['mass']/1000 / self.Compost_input.Land_app['land_payload']['amount']* self.Compost_input.Land_app['distLand']['amount'] ,self.LCI)
+        #add_LCI('Full_Medium-duty truck transport of compost to land application', self.Compost.data['mass'] * self.Compost_input.Land_app['distLand']['amount'] ,self.LCI)
+        #add_LCI('Empty_Medium-duty truck transport return from land application', self.Compost.data['mass']/1000 / self.Compost_input.Land_app['land_payload']['amount']* self.Compost_input.Land_app['distLand']['amount'] ,self.LCI)
 
     def setup_MC(self,seed=None):
         self.Compost_input.setup_MC(seed)
@@ -61,8 +61,8 @@ class Compost_use:
                
         for y in self.Index:
 ### Output Technospphere Database
-            Technosphere[y][('Technosphere', 'Internal_Process_Transportation_Medium_Duty_Diesel_Truck')] = self.LCI['Full_Medium-duty truck transport of compost to land application'] [y]
-            Technosphere[y][('Technosphere', 'Empty_Return_Medium_Duty_Diesel_Truck')] = self.LCI['Empty_Medium-duty truck transport return from land application'][y]
+            #Technosphere[y][('Technosphere', 'Internal_Process_Transportation_Medium_Duty_Diesel_Truck')] = self.LCI['Full_Medium-duty truck transport of compost to land application'] [y]
+            #Technosphere[y][('Technosphere', 'Empty_Return_Medium_Duty_Diesel_Truck')] = self.LCI['Empty_Medium-duty truck transport return from land application'][y]
             
             if self.Compost_input.operation['fertOff']['amount'] == 1 and self.Compost_input.operation['choice_BU']['amount'] == 1:
                 Technosphere[y][('Technosphere', 'Equipment_Diesel')] = self.LCI[('Technosphere', 'Equipment_Diesel')][y]
