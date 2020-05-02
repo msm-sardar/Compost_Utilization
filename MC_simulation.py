@@ -34,9 +34,9 @@ if __name__=='__main__':
     CommonData = CommonData()
      
     t1 = time()
-    n=2000
+    n=20000
     a = ParallelData(functional_unit, method, project,process_models=process_models,process_model_names=process_model_names,common_data =CommonData ,seed = 100)
-    a.run(4,n)
+    a.run(8,n)
     t2=time()
     print(n, 'runs in: ', t2-t1)
     

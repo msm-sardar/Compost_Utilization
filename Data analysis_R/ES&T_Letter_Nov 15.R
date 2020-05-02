@@ -1,7 +1,7 @@
 ### Read Data
 setwd("C:\\Users\\msardar2\\Google Drive\\Brightway2\\organic_analysis")
 
-setwd("C:\\Users\\msmsa\\Google Drive\\Brightway2\\organic_analysis")
+setwd("C:\Users\msmsa\Google Drive\Brightway2\Compost_Utilization\Results")
 data = read.csv('MC_results Nov 15_ both.csv')
 
 ### Showing the Tie ranks and histograms
@@ -80,11 +80,11 @@ data_contour = read.csv('contour Nov15_ peat dens_sub.csv')
 
 f <- list(
   family = "sans serif",
-  size = 24,
+  size = 28,
   color = 'black')
 f2 <- list(
   family = "sans serif",
-  size = 24,
+  size = 28,
   color = 'black')
 
 
@@ -136,7 +136,7 @@ xlab <- list(
   tickfont = f2)
 
 ylab <- list(
-  title = "Compost Carbon Content",
+  title = "Compost Carbon Content (%)",
   titlefont = f,
   tickfont = f2)
 
@@ -147,7 +147,7 @@ m <- list(
   t = 60)
 
 plot_ly(
-  y = seq(0.1, 0.47, length.out = 10),
+  y = seq(10, 47, length.out = 10),
   x = seq(55, 100, length.out = 10), 
   z = matrix(data_contour$Dif_gwp,nrow = 10,ncol = 10),
   type = "contour",
@@ -161,9 +161,9 @@ plot_ly(
     yaxis = ylab,
     legend = f,
     margin = m) %>%
-add_trace(x = c(55, 100),name = '', y = c(0.3, 0.3), type = "scatter", mode = "lines",color = I('white'),
+add_trace(x = c(55, 100),name = '', y = c(30, 30), type = "scatter", mode = "lines",color = I('white'),
                       line = list( width=3, dash='dash'))%>%
-add_trace(x = c(90, 90),name = '', y = c(0.1, 0.47), type = "scatter", mode = "lines",color = I('white'),
+add_trace(x = c(90, 90),name = '', y = c(10, 47), type = "scatter", mode = "lines",color = I('white'),
                       line = list( width=3, dash='dash'))
 
 
@@ -173,12 +173,12 @@ add_trace(x = c(90, 90),name = '', y = c(0.1, 0.47), type = "scatter", mode = "l
 data_contour = read.csv('contour Nov15 _ c input _Moisture .csv')
 
 xlab <- list(
-  title = "Compost Moisture content",
+  title = "Compost Moisture content (%)",
   titlefont = f,
   tickfont = f2)
 
 ylab <- list(
-  title = "Compost Carbon Content",
+  title = "Compost Carbon Content (%)",
   titlefont = f,
   tickfont = f2)
 
@@ -189,8 +189,8 @@ m <- list(
   t = 60)
 
 plot_ly(
-  x  = seq(0.18, 0.67, length.out = 10),
-  y = seq(0.10, 0.47, length.out = 10), 
+  x  = seq(18, 67, length.out = 10),
+  y = seq(10, 47, length.out = 10), 
   z = matrix(data_contour$Dif_gwp,nrow = 10,ncol = 10),
   type = "contour",
   colorscale='Jet',
@@ -203,9 +203,9 @@ plot_ly(
     yaxis = ylab,
     legend = f,
     margin = m)%>%
-  add_trace(x = c(0.18, 0.67),name = '', y = c(.30, 0.3), type = "scatter", mode = "lines",color = I('white'),
+  add_trace(x = c(18, 67),name = '', y = c(30, 30), type = "scatter", mode = "lines",color = I('white'),
             line = list( width=3, dash='dash'))%>%
-  add_trace(x = c(0.45, 0.45),name = '', y = c(0.10, 0.47), type = "scatter", mode = "lines",color = I('white'),
+  add_trace(x = c(45, 45),name = '', y = c(10, 47), type = "scatter", mode = "lines",color = I('white'),
             line = list( width=3, dash='dash'))
 
 ######################################
@@ -214,17 +214,12 @@ plot_ly(
 data_contour = read.csv('contour Nov15_ MFEN NCont.csv')
 
 xlab <- list(
-  title = "Compost nitrogen content",
+  title = "Compost nitrogen content (%)",
   titlefont = f,
   tickfont = f2)
 
 ylab <- list(
   title = "MFEN",
-  titlefont = f,
-  tickfont = f2)
-
-leglab<- list(
-  title = "Compost Moisture content",
   titlefont = f,
   tickfont = f2)
 
@@ -236,7 +231,7 @@ m <- list(
 
 plot_ly(
   y = seq(0,1, length.out = 10),
-  x = seq(0.0051,0.028, length.out = 10), 
+  x = seq(0.51,2.8, length.out = 10), 
   z = matrix(data_contour$Dif_gwp,nrow = 10,ncol = 10),
   type = "contour",
   colorscale='Jet',
@@ -249,9 +244,9 @@ plot_ly(
     yaxis = ylab,
     legend = leglab,
     margin = m)%>%
-  add_trace(x = c(0.015,0.015),name = '', y = c(0,1), type = "scatter", mode = "lines",color = I('white'),
+  add_trace(x = c(1.5,1.5),name = '', y = c(0,1), type = "scatter", mode = "lines",color = I('white'),
             line = list( width=3, dash='dash'))%>%
-  add_trace(x = c(0.0051, 0.028),name = '', y = c(0.6, 0.6), type = "scatter", mode = "lines",color = I('white'),
+  add_trace(x = c(0.51, 2.8),name = '', y = c(0.6, 0.6), type = "scatter", mode = "lines",color = I('white'),
             line = list( width=3, dash='dash'))
 
 
@@ -263,7 +258,7 @@ plot_ly(
 
 
 setwd("C:\\Users\\msardar2\\Google Drive\\Brightway2\\organic_analysis")
-setwd("C:\\Users\\msmsa\\Google Drive\\Brightway2\\organic_analysis")
+setwd("C:\\Users\\msmsa\\Google Drive\\Brightway2\\Compost_Utilization\\Results")
 data = read.csv('distibution.csv')
 par(mfrow=c(1,1))
 par(mgp=c(2,2,0),las=0)
@@ -369,4 +364,42 @@ axis(1,1:4, c("ADC \n \n",
               "Soil amendment \n peat offset \n",
               "Soil amendment \n both fertilizer \n and peat offset"), mgp=c(3, 3, 0))
 axis(2, mgp=c(3, 1, 0))
+
+
+
+
+
+new_data =   data[c(1:4,13:16)] 
+res=cor(new_data)
+plot(x=new_data$ADC.scenario..IPCC.2013_GWP..BioCO2.1,
+     y=new_data$ADC.scenario..CED,
+     xaxt='n', yaxt='n',
+     xlab = 'ADC scenario, GWP',ylab = 'ADC scenario, CED')
+axis(2, mgp=c(3, 1, 0))
+axis(1, mgp=c(3, 1, 0))
+
+plot(x=new_data$Soil.amendment..peat.and.fertilizer..scenario..IPCC.2013_GWP..BioCO2.1,
+     y=new_data$Soil.amendment..peat.and.fertilizer..scenario..CED,
+     xaxt='n', yaxt='n',
+     xlab = 'Soil amendment scenario, GWP',ylab = 'Soil amendment scenario, CED')
+
+axis(2, mgp=c(3, 1, 0))
+axis(1, mgp=c(3, 1, 0))
+
+
+new_data =   data[c(1:4,13:16)] 
+res=cor(new_data)
+plot(x=data$ADC.scenario..IPCC.2013_GWP..BioCO2.0,
+     y=new_data$ADC.scenario..CED,
+     xaxt='n', yaxt='n',
+     xlab = 'ADC scenario, GWP',ylab = 'ADC scenario, CED')
+axis(2, mgp=c(3, 1, 0))
+axis(1, mgp=c(3, 1, 0))
+
+
+
+
+
+
+
 

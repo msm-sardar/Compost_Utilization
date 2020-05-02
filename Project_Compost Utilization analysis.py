@@ -38,8 +38,52 @@ project = "Compost_use"
 projects.set_current(project)
 db = Database("waste")
 functional_unit = {db.get("scenario1") : 1}
-method = ('SWOLF_IPCC','SWOLF')
+
+functional_unit = {('Technosphere', 'Internal_Process_Transportation_Medium_Duty_Diesel_Truck'):1000*100}
+
+
+method = ('IPCC 2013, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=1, C1_36')
 A=LCA(functional_unit,method)
 A.lci()
 A.lcia()
 print(A.score)
+
+method = ('IPCC 2013, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=0, C1_36')
+A=LCA(functional_unit,method)
+A.lci()
+A.lcia()
+print(A.score)
+
+method = ('IPCC 2007, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=1')
+A=LCA(functional_unit,method)
+A.lci()
+A.lcia()
+print(A.score)
+
+method = ('IPCC 2007, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=0')
+A=LCA(functional_unit,method)
+A.lci()
+A.lcia()
+print(A.score)
+
+method = ('SWOLF_Acidification','SWOLF')
+A=LCA(functional_unit,method)
+A.lci()
+A.lcia()
+print(A.score)
+
+method = ('SWOLF_Eutrophication','SWOLF')
+A=LCA(functional_unit,method)
+A.lci()
+A.lcia()
+print(A.score)
+
+method = ('SWOLF_CED','SWOLF')
+A=LCA(functional_unit,method)
+A.lci()
+A.lcia()
+print(A.score)
+
+
+
+
