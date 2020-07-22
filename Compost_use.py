@@ -6,8 +6,9 @@ Created on Fri Aug 30 11:37:26 2019
 """
 import numpy as np
 import pandas as pd
-from Compost_input import *
-from CommonData import *
+from Compost_input_for_Sensitivity_Analysis import *
+#from CommonData import *
+from CommonData_for_Sensitivity_Analysis import *
 from stats_arrays import *
 from flow import *
 

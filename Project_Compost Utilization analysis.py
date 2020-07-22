@@ -39,7 +39,7 @@ projects.set_current(project)
 db = Database("waste")
 functional_unit = {db.get("scenario1") : 1}
 
-functional_unit = {('Technosphere', 'Internal_Process_Transportation_Medium_Duty_Diesel_Truck'):1000*100}
+functional_unit = {('Technosphere', 'Internal_Process_Transportation_Medium_Duty_Diesel_Truck'):1000*50}
 
 
 method = ('IPCC 2013, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=1, C1_36')

@@ -1,7 +1,8 @@
 from project_class import *
 from building_matrices import *
 import pickle
-from CommonData import *
+#from CommonData import *
+from CommonData_for_Sensitivity_Analysis import *
 from Compost_use import *
 from time import time
 from Store_results import *
@@ -34,9 +35,9 @@ if __name__=='__main__':
     CommonData = CommonData()
      
     t1 = time()
-    n=20000
+    n=100
     a = ParallelData(functional_unit, method, project,process_models=process_models,process_model_names=process_model_names,common_data =CommonData ,seed = 100)
-    a.run(8,n)
+    a.run(1,n)
     t2=time()
     print(n, 'runs in: ', t2-t1)
     

@@ -1,7 +1,7 @@
 ### Read Data
 setwd("C:\\Users\\msardar2\\Google Drive\\Brightway2\\organic_analysis")
 
-setwd("C:\Users\msmsa\Google Drive\Brightway2\Compost_Utilization\Results")
+setwd("C:/Users/msmsa/Google Drive/Brightway2/Compost_Utilization/Results")
 data = read.csv('MC_results Nov 15_ both.csv')
 
 ### Showing the Tie ranks and histograms
@@ -242,12 +242,228 @@ plot_ly(
     font = f,
     xaxis = xlab,
     yaxis = ylab,
-    legend = leglab,
+    legend = f,
     margin = m)%>%
   add_trace(x = c(1.5,1.5),name = '', y = c(0,1), type = "scatter", mode = "lines",color = I('white'),
             line = list( width=3, dash='dash'))%>%
   add_trace(x = c(0.51, 2.8),name = '', y = c(0.6, 0.6), type = "scatter", mode = "lines",color = I('white'),
             line = list( width=3, dash='dash'))
+
+
+
+
+
+######################################
+########################   Eutrophication
+### N content vs N as NO3
+data_contour = read.csv('contour Jun15_ NCont_NO3_Eutrophication.csv')
+
+xlab <- list(
+  title = "Compost N content (%)",
+  titlefont = f,
+  tickfont = f2)
+
+ylab <- list(
+  title = "Percent of N as NO3 (%)",
+  titlefont = f,
+  tickfont = f2)
+
+m <- list(
+  l = 35,
+  r = 20,
+  b = 35,
+  t = 60)
+
+fig<-plot_ly(
+  type = "contour",
+  x= seq(2.8,0.51, length.out = 10),
+  y = seq(3,87, length.out = 10), 
+  z = matrix(data_contour$Dif_Eutrophication,nrow = 10,ncol = 10),
+  colorscale='Jet',
+  contours = list(start = -10,end = 2,size=1,showlabels = TRUE,tickfont=f),
+  color = I("black"),
+  width = 700, height = 700) 
+
+fig<-fig%>% colorbar(title = "Elevation \n in meters") 
+fig<-fig%>%layout(
+    font = f,
+    xaxis = xlab,
+    yaxis = ylab,
+    legend = f,
+    tickfont=f,
+    margin = m)%>% colorbar(title = "Elevation \n in meters")
+
+fig<-fig%>%add_trace(x = c(0.51, 2.8),name = '', y = c(20, 20), type = "scatter", mode = "lines",color = I('white'),
+            line = list( width=3, dash='dash'))
+
+fig<-fig%>%add_trace(fig,x = c(1.5,1.5),name = '', y = c(5,85), type = "scatter", mode = "lines",color = I('white'),
+            line = list( width=3, dash='dash'))
+
+fig
+
+
+######################################
+########################   Eutrophication
+### N content vs N compost moisture
+data_contour = read.csv('contour Jun15_ NCont_moisture_Eutrophication.csv')
+
+xlab <- list(
+  title = "Compost N content (%)",
+  titlefont = f,
+  tickfont = f2)
+
+ylab <- list(
+  title = "Compost moisture content (%)",
+  titlefont = f,
+  tickfont = f2)
+
+m <- list(
+  l = 35,
+  r = 20,
+  b = 35,
+  t = 60)
+
+plot_ly(
+  x= seq(0.51,2.8, length.out = 10),
+  y = seq(18,67, length.out = 10), 
+  z = matrix(data_contour$Dif_Eutrophication,nrow = 10,ncol = 10),
+  type = "contour",
+  colorscale='Jet',
+  contours = list(start = -5,end = 2,size=1,showlabels = TRUE),
+  color = I("black"),
+  width = 700, height = 700) %>%
+  layout(
+    font = f,
+    xaxis = xlab,
+    yaxis = ylab,
+    legend = f,
+    margin = m)%>% 
+  add_trace(x = c(0.51, 2.8),name = '', y = c(45,45), type = "scatter", mode = "lines",color = I('white'),
+            line = list( width=3, dash='dash'))%>%
+  add_trace(x = c(1.5,1.5),name = '', y = c(18,67), type = "scatter", mode = "lines",color = I('white'),
+            line = list( width=3, dash='dash'))
+
+
+
+
+
+
+######################################
+########################  CED
+### 
+data_contour = read.csv('contour Jun15_CED.csv')
+
+ylab <- list(
+  title = "Peat substitution factor",
+  titlefont = f,
+  tickfont = f2)
+
+xlab <- list(
+  title = "Peat density (kg/m3)",
+  titlefont = f,
+  tickfont = f2)
+
+m <- list(
+  l = 35,
+  r = 20,
+  b = 35,
+  t = 60)
+
+plot_ly(
+  y= seq(0.22,1, length.out = 10),
+  x = seq(100,350, length.out = 10), 
+  z = matrix(data_contour$Dif_Eutrophication,nrow = 10,ncol = 10),
+  type = "contour",
+  colorscale='Jet',
+  contours = list(start = 0,end = 6000,size=500,showlabels = TRUE),
+  color = I("black"),
+  width = 700, height = 700) %>%
+  layout(
+    font = f,
+    xaxis = xlab,
+    yaxis = ylab,
+    legend = f,
+    margin = m)%>% 
+  add_trace(x = c(100, 350),name = '', y = c(0.9,0.9), type = "scatter", mode = "lines",color = I('white'),
+            line = list( width=3, dash='dash'))%>%
+  add_trace(x = c(200,200),name = '', y = c(0.25,1), type = "scatter", mode = "lines",color = I('white'),
+            line = list( width=3, dash='dash'))
+
+######################################
+########################  Acidification
+### 
+data_contour = read.csv('contour Jun15_Acidification.csv')
+
+ylab <- list(
+  title = "Percent of N as NH3 (%)",
+  titlefont = f,
+  tickfont = f2)
+
+xlab <- list(
+  title = "Compost N content (%)",
+  titlefont = f,
+  tickfont = f2)
+
+m <- list(
+  l = 35,
+  r = 20,
+  b = 35,
+  t = 60)
+
+plot_ly(
+  x= seq(0.51,2.8, length.out = 10),
+  y = seq(1,50, length.out = 10), 
+  z = matrix(data_contour$Dif_Acidification,nrow = 10,ncol = 10),
+  type = "contour",
+  colorscale='Jet',
+  contours = list(start = -2,end = 1,size=0.2,showlabels = TRUE),
+  color = I("black"),
+  width = 700, height = 700) %>%
+  layout(
+    font = f,
+    xaxis = xlab,
+    yaxis = ylab,
+    legend = f,
+    margin = m)%>% 
+  add_trace(x = c(0.51,2.8),name = '', y = c(25,25), type = "scatter", mode = "lines",color = I('white'),
+            line = list( width=3, dash='dash'))%>%
+  add_trace(x = c(1.5,1.5),name = '', y = c(3,50), type = "scatter", mode = "lines",color = I('white'),
+            line = list( width=3, dash='dash'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -364,6 +580,28 @@ axis(1,1:4, c("ADC \n \n",
               "Soil amendment \n peat offset \n",
               "Soil amendment \n both fertilizer \n and peat offset"), mgp=c(3, 3, 0))
 axis(2, mgp=c(3, 1, 0))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

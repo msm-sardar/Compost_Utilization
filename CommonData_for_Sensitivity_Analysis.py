@@ -66,7 +66,7 @@ class CommonData(MC):
                 
                 'frac_gw':{"Name":"Fraction of NO3 that is emitted to groundwater","amount":0.50,"unit":None},
                 
-                'MFEN':{"Name":"Nitrogen mineral fertilizer equivalent","amount":0.6,"unit":'kg N/kg N applied','list':np.linspace(0,1,10).tolist()*10},
+                'MFEN':{"Name":"Nitrogen mineral fertilizer equivalent","amount":0.6,"unit":'kg N/kg N applied'},
                 
                 'MFEP':{"Name":"Phosphorus mineral fertilizer equivalent","amount":0.9,"unit":'kg N/kg N applied'}, 
                 

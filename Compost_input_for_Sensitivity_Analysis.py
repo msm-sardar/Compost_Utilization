@@ -30,7 +30,7 @@ class Compost_input(MC):
                 
                 'perNH3evap':{"Name":"Percent of Ammonia that evaporates","amount":15,"unit":'%',"Reference":'16'},
                               
-                'perNasNH3fc':{"Name":"Percent N that is Ammonia","amount":25,"unit":'%',"Reference":'16'},
+                'perNasNH3fc':{"Name":"Percent N that is Ammonia","amount":25,"unit":'%',"Reference":'16','list':np.linspace(1,50,10).tolist()*10},
                 }  
         
 ### Facility Operation
@@ -81,7 +81,11 @@ class Compost_input(MC):
                                      
                         'DC_thickness':{'Name':'DC_thickness','amount':15,'unit':'cm'},
                         
-                        'ADC_thickness':{'Name':'ADC_thickness','amount':22.5,'unit':'cm'}       
+                        'ADC_thickness':{'Name':'ADC_thickness','amount':22.5,'unit':'cm'},  
+                        
+                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000051,'unit':'fraction'},
+                        
+                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.003597,'unit':'fraction'}
                         
                         }
 
