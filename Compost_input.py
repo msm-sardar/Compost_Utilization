@@ -105,12 +105,11 @@ class Compost_input(MC):
                         'ADC_thickness':{'Name':'ADC_thickness','amount':22.5,'unit':'cm',
                                          'uncertainty_type':2,'loc': 3.2189, 'scale':0.1150},
                         
-                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000051,'unit':'fraction',
-                                         'uncertainty_type':2,'loc': -9.8837, 'scale':0.2093},
+                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000054,'unit':'fraction',
+                                         'uncertainty_type':2,'loc': -9.8271, 'scale':0.2093},
                         
-                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.003597,'unit':'fraction',
-                                         'uncertainty_type':2,'loc': -5.6277, 'scale':0.2093},
-                        
+                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.000097,'unit':'fraction',
+                                         'uncertainty_type':2,'loc': -9.2358, 'scale':0.2093},
                         }
 
 ### Monte_carlo          

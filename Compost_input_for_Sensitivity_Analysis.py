@@ -83,9 +83,9 @@ class Compost_input(MC):
                         
                         'ADC_thickness':{'Name':'ADC_thickness','amount':22.5,'unit':'cm'},  
                         
-                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000051,'unit':'fraction'},
+                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000054,'unit':'fraction'},
                         
-                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.003597,'unit':'fraction'}
+                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.000097,'unit':'fraction'}
                         
                         }
 
