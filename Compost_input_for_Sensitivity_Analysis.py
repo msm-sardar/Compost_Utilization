@@ -30,12 +30,12 @@ class Compost_input(MC):
                 
                 'perNH3evap':{"Name":"Percent of Ammonia that evaporates","amount":15,"unit":'%',"Reference":'16'},
                               
-                'perNasNH3fc':{"Name":"Percent N that is Ammonia","amount":25,"unit":'%',"Reference":'16','list':np.linspace(1,50,10).tolist()*10},
+                'perNasNH3fc':{"Name":"Percent N that is Ammonia","amount":25,"unit":'%',"Reference":'16'},
                 }  
         
 ### Facility Operation
         self.operation = {
-                'choice_BU':{'Name':'Digestate Beneficial Use (1) or No Beneficial Use (0)','amount':1,'unit':'0/1','Referenc':None},
+                'choice_BU':{'Name':'Digestate Beneficial Use (1) or No Beneficial Use (0)','amount':0,'unit':'0/1','Referenc':None},
                 'peatOff':{'Name':'Digestate Beneficial Use offsets Peat (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
                 'fertOff':{'Name':'Digestate Beneficial Use offsets Fertilizer (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
                 'allocation_ADC':{'Name':'Allocation factor of LF material use to ADC','amount':0.5,'unit':'frac'}}
@@ -83,9 +83,9 @@ class Compost_input(MC):
                         
                         'ADC_thickness':{'Name':'ADC_thickness','amount':22.5,'unit':'cm'},  
                         
-                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000054,'unit':'fraction'},
+                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000048,'unit':'fraction'},
                         
-                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.000097,'unit':'fraction'}
+                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.000087,'unit':'fraction'}
                         
                         }
 
