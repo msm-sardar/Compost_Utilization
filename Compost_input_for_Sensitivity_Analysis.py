@@ -55,7 +55,7 @@ class Compost_input(MC):
 ### Initial flow
         self.initflow ={'mass':{"Name":"mass","amount":1000},
                         'C_cont':{"Name":"C_cont","amount":0.30},
-                        'N_cont':{"Name":"N_cont","amount":0.015,'list':np.repeat(np.linspace(0.0051,0.028,10),10)},
+                        'N_cont':{"Name":"N_cont","amount":0.015},
                         'P_cont':{"Name":"P_cont","amount":0.005},
                         'K_cont':{"Name":"K_cont","amount":0.01}
                         }
@@ -82,12 +82,14 @@ class Compost_input(MC):
                         'DC_thickness':{'Name':'DC_thickness','amount':15,'unit':'cm'},
                         
                         'ADC_thickness':{'Name':'ADC_thickness','amount':22.5,'unit':'cm'},  
-                        
-                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000048,'unit':'fraction'},
-                        
-                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.000087,'unit':'fraction'}
-                        
-                        }
+
+                        'Frac_NH4':{'Name':'Frac_NH4','amount':0.00563,'unit':'fraction'},
+ 
+                        'LCRS_eff':{'Name':'LCRS_eff','amount':0.991,'unit':'fraction'},                       
+
+                        'NH4_rmv_eff':{'Name':'NH4_rmv_eff','amount':0.95,'unit':'fraction'},
+                                       
+                        'Grid_mix':{'Name':'Grid_mix','amount':1,'unit':'fraction'} }
 
 ### Monte_carlo          
     def setup_MC(self,seed=None):

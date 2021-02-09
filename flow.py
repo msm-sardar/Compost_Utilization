@@ -107,17 +107,19 @@ def compost_use(input,CommonData,Compost_input,LCI):
         add_LCI('Carbon dioxide, non-fossil storage', -(C_storage) * CommonData.MW['CO2']['amount']/CommonData.MW['C']['amount'] ,LCI)
         add_LCI('Carbon dioxide, non-fossil', (C_released+C_CH4_EnergyRec+C_CH4_Flared+C_CH4_Oxidized) * CommonData.MW['CO2']['amount']/CommonData.MW['C']['amount'] ,LCI)
         add_LCI('Methane, non-fossil', C_CH4_Emitted * CommonData.MW['CH4']['amount']/CommonData.MW['C']['amount'] ,LCI)
-        add_LCI(('Technosphere', 'Electricity_production'), C_CH4_Electricity ,LCI)
+        add_LCI(('Technosphere', 'Electricity_production'), C_CH4_Electricity * Compost_input.Landfill['Grid_mix']['amount'] ,LCI)
         
         #General emissions from LF
         add_LCI(('Technosphere', 'compost_to_LF'), input.data['mass'] /1000 * Compost_input.operation['allocation_ADC']['amount'] ,LCI)
         
         #Amomonium emission from LF (Calculated base on the ammomium/N_cont ratio in LF)
-        NH4_GW=  Compost_input.Landfill['Frac_NH4_GW']['amount']* input.data['N_cont']
-        NH4_SW=  Compost_input.Landfill['Frac_NH4_SW']['amount']* input.data['N_cont']
+        NH4_GW=  Compost_input.Landfill['Frac_NH4']['amount']* input.data['N_cont'] * (1-Compost_input.Landfill['LCRS_eff']['amount'])
+        NH4_SW=  Compost_input.Landfill['Frac_NH4']['amount']* input.data['N_cont'] * Compost_input.Landfill['LCRS_eff']['amount'] * (1-Compost_input.Landfill['NH4_rmv_eff']['amount'])
+        NO3_SW = Compost_input.Landfill['Frac_NH4']['amount']* input.data['N_cont'] * Compost_input.Landfill['LCRS_eff']['amount'] * Compost_input.Landfill['NH4_rmv_eff']['amount']
         add_LCI('Ammonium, ion (ground water)', NH4_GW * CommonData.MW['Ammonium']['amount']/CommonData.MW['N']['amount'] ,LCI)
         add_LCI('Ammonium, ion (surface water)', NH4_SW * CommonData.MW['Ammonium']['amount']/CommonData.MW['N']['amount'] ,LCI)
-        
+        add_LCI('Nitrate (Surface water)',NO3_SW * CommonData.MW['Nitrate']['amount']/CommonData.MW['N']['amount'] ,LCI)
+    
         #Avoided excavation
         
         avoided_excav =input.data['mass']/Compost_input.Material_Properties['densFC']['amount']/Compost_input.Landfill['ADC_thickness']['amount']* \

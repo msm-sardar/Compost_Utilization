@@ -105,7 +105,7 @@ class Compost_use:
                 Biosphere[y][('biosphere3', '87883a4e-1e3e-4c9d-90c0-f1bea36f8014')]= 0 #Ammonia ('air',)
                 Biosphere[y][('biosphere3', '20185046-64bb-4c09-a8e7-e8a9e144ca98')]= 0 # Dinitrogen monoxide ('air',)
                 Biosphere[y][('biosphere3', 'b9291c72-4b1d-4275-8068-4c707dc3ce33')]= 0 #Nitrate ('water', 'ground-')
-                Biosphere[y][('biosphere3', '7ce56135-2ca5-4fba-ad52-d62a34bfeb35')]= 0 #Nitrate ('water', 'surface water')
+                Biosphere[y][('biosphere3', '7ce56135-2ca5-4fba-ad52-d62a34bfeb35')]= self.LCI['Nitrate (Surface water)'][y] #Nitrate ('water', 'surface water')
                 
             if self.Compost_input.operation['choice_BU']['amount'] == 1 and self.Compost_input.operation['peatOff']['amount'] == 1:
                 Biosphere[y][('biosphere3', '349b29d1-3e58-4c66-98b9-9d1a076efd2e')]= self.LCI['Carbon dioxide, fossil'][y] # Carbon dioxide, fossil ('air',)

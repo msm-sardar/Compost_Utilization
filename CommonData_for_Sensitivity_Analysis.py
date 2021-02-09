@@ -62,7 +62,7 @@ class CommonData(MC):
         self.Land_app = {
                 'cmpLandDies':{"Name":"Compost application diesel use","amount":0.8,"unit":'L/Mg compost'},
                 
-                'NO3':{"Name":"Fraction of N content that is emitted as NO3 ","amount":0.20,"unit":None,'list':np.linspace(0.03,0.87,10).tolist()*10},
+                'NO3':{"Name":"Fraction of N content that is emitted as NO3 ","amount":0.20,"unit":None},
                 
                 'frac_gw':{"Name":"Fraction of NO3 that is emitted to groundwater","amount":0.50,"unit":None},
                 

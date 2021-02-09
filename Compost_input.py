@@ -16,8 +16,8 @@ class Compost_input(MC):
                 #'erLand':{"Name":"Empty return from land application (0=no; 1=yes)","amount":1,"unit":'0/1',"Reference":None},
                 #'land_payload':{"Name":"Actual payload of truck used to haul soil amendment","amount":7.3,"unit":'Mg',"Reference":None},
                 
-                'PeatSubFac':{"Name":"Volumetric peat replacement factor","amount":0.9,"unit":None,"Reference":'17',
-                              'uncertainty_type':5,'loc':0.8,'minimum':0.22,'maximum':1},
+                'PeatSubFac':{"Name":"Volumetric peat replacement factor","amount":1,"unit":None,"Reference":'17',
+                              'uncertainty_type':5,'loc':1,'minimum':0.9,'maximum':1.1},
                 
                 'densPeat':{"Name":"Density of peat","amount":200,"unit":'kg/m3',"Reference":'17',
                             'uncertainty_type':3,'loc': 200, 'scale':57},
@@ -43,9 +43,9 @@ class Compost_input(MC):
         
 ### Facility Operation
         self.operation = {
-                'choice_BU':{'Name':'Digestate Beneficial Use (1) or No Beneficial Use (0)','amount':0,'unit':'0/1','Referenc':None},
+                'choice_BU':{'Name':'Digestate Beneficial Use (1) or No Beneficial Use (0)','amount':1,'unit':'0/1','Referenc':None},
                 'peatOff':{'Name':'Digestate Beneficial Use offsets Peat (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
-                'fertOff':{'Name':'Digestate Beneficial Use offsets Fertilizer (1 - Yes; 0 - No)','amount':0,'unit':'0/1','Referenc':None},
+                'fertOff':{'Name':'Digestate Beneficial Use offsets Fertilizer (1 - Yes; 0 - No)','amount':1,'unit':'0/1','Referenc':None},
                 'allocation_ADC':{'Name':'Allocation factor of LF material use to ADC','amount':0.5,'unit':'frac',
                                   'uncertainty_type':4,'minimum':0,'maximum':1}}
 
@@ -67,23 +67,23 @@ class Compost_input(MC):
 ### Initial flow
         self.initflow ={'mass':{"Name":"mass","amount":1000},
                         'C_cont':{"Name":"C_cont","amount":0.30,'uncertainty_type':4,'minimum':0.10,'maximum':0.47},
-                        'N_cont':{"Name":"N_cont","amount":0.015,'uncertainty_type':4,'minimum':0.0051,'maximum':0.028},
+                        'N_cont':{"Name":"N_cont","amount":0.015,'uncertainty_type':4,'minimum':0.007,'maximum':0.028},
                         'P_cont':{"Name":"P_cont","amount":0.005,'uncertainty_type':4,'minimum':0.0015,'maximum':0.0093},
                         'K_cont':{"Name":"K_cont","amount":0.01,'uncertainty_type':4,'minimum':0.0007,'maximum':0.023}
                         }
 
 ### Landfill
         self.Landfill ={'CH4_Collected':{"Name":"CH4_Collected","amount":60,
-                                         'uncertainty_type':3,'loc': 60 ,'scale':4},
+                                         'uncertainty_type':3,'loc': 60 ,'scale':4, 'minimum':48.7,'maximum':69.7},
         
                         'Frac_oxidized':{"Name":"Frac_oxidized","amount":0.17,
-                                         'uncertainty_type':3,'loc': 0.17,'scale':0.03},
+                                         'uncertainty_type':3,'loc': 0.17,'scale':0.03, 'minimum':0.105,'maximum':0.279},
                                          
                         'Frac_flared':{"Name":"Frac_flared","amount":0.31,
-                                       'uncertainty_type':3,'loc': 0.31 , 'scale':0.12},
+                                       'uncertainty_type':3,'loc': 0.31 , 'scale':0.12, 'minimum':0.1,'maximum':0.593},
                                        
                         'percCStor_LF':{"Name":"Percent of carbon in compost remaining after 100 years","amount":90,"unit":'%'
-                                        ,'uncertainty_type':3,'loc':90,'scale':3},
+                                        ,'uncertainty_type':3,'loc':90,'scale':3, 'minimum':83.2,'maximum':97.5},
                                         
                         'Elec_eff':{"Name":"Elec_eff in LF","amount":0.30,"unit":None
                                         ,'uncertainty_type':4,'minimum':0.20,'maximum':0.37},
@@ -104,12 +104,18 @@ class Compost_input(MC):
                         
                         'ADC_thickness':{'Name':'ADC_thickness','amount':22.5,'unit':'cm',
                                          'uncertainty_type':2,'loc': 3.2189, 'scale':0.1150},
-                        
-                        'Frac_NH4_GW':{'Name':'Frac_NH4_GW','amount':0.000048,'unit':'fraction',
-                                         'uncertainty_type':2,'loc': -9.9466, 'scale':0.2093},
-                        
-                        'Frac_NH4_SW':{'Name':'Frac_NH4_SW','amount':0.000087,'unit':'fraction',
-                                         'uncertainty_type':2,'loc': -9.3552, 'scale':0.2093},
+
+                        'Frac_NH4':{'Name':'Frac_NH4','amount':0.00563,'unit':'fraction',
+                                         'uncertainty_type':2,'loc': -5.1796, 'scale':0.2093},
+ 
+                        'LCRS_eff':{'Name':'LCRS_eff','amount':0.991,'unit':'fraction',
+                                         'uncertainty_type':5,'loc': 0.991 ,'minimum':0.971,'maximum':0.999},                       
+
+                        'NH4_rmv_eff':{'Name':'NH4_rmv_eff','amount':0.95,'unit':'fraction',
+                                         'uncertainty_type':5,'loc': 0.95 ,'minimum':0.89,'maximum':0.98},
+                                       
+                        'Grid_mix':{'Name':'Grid_mix','amount':1,'unit':'fraction',
+                                         'uncertainty_type':1,'loc': 1 ,'minimum':0.7,'maximum':1.35}
                         }
 
 ### Monte_carlo          

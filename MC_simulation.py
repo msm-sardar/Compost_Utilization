@@ -1,8 +1,8 @@
 from project_class import *
 from building_matrices import *
 import pickle
-#from CommonData import *
-from CommonData_for_Sensitivity_Analysis import *
+from CommonData import *
+#from CommonData_for_Sensitivity_Analysis import *
 from Compost_use import *
 from time import time
 from Store_results import *
@@ -20,8 +20,8 @@ if __name__=='__main__':
               ('IPCC 2007, Ecoinvent V3.5', 'climate change', 'GWP 100a, bioCO2=0'),
               ('SWOLF_Acidification','SWOLF'),
               ('SWOLF_Eutrophication','SWOLF'),
-              ('SWOLF_PhotochemicalSmog','SWOLF'),
-              ('SWOLF_CED','SWOLF')
+              ('SWOLF_CED','SWOLF'),
+              ('CML (v4.4, 2015)', 'resources', 'depletion of abiotic resources - elements, ultimate reserves')
               ]
 
     Treatment_processes = {}
@@ -35,9 +35,9 @@ if __name__=='__main__':
     CommonData = CommonData()
      
     t1 = time()
-    n=100
+    n=20000
     a = ParallelData(functional_unit, method, project,process_models=process_models,process_model_names=process_model_names,common_data =CommonData ,seed = 100)
-    a.run(1,n)
+    a.run(8,n)
     t2=time()
     print(n, 'runs in: ', t2-t1)
     

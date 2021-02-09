@@ -1,0 +1,15 @@
+Index,GWP,Acidification,Eutrophication,CED,ADP
+Compost N content,0.04,-0.30,-0.45,0.12,0.59
+Compost mositure content,0.42,0.22,0.32,-0.07,-0.46
+MFEN,0.17,0.26,0.17,0.13,0.59
+Peat density,0.34,0.03,0.00,0.82,0.02
+Compost C content,-0.69,-0.04,0.00,-0.06,-0.02
+Fraction of N as NH3,0.01,-0.77,-0.02,0.00,-0.01
+Fraction of N as NO3,0.01,-0.01,-0.72,0.00,0.01
+Compost density,-0.19,-0.01,-0.01,-0.48,0.00
+Landfill C storage,-0.24,0.03,0.01,0.04,-0.01
+Fraction of NH3 evaporated,0.01,-0.19,0.00,0.01,0.00
+Peat substitution factor,0.06,-0.01,0.00,0.13,-0.01
+Peat moisture,-0.13,0.00,-0.01,0.00,0.01
+Soil C storage,0.11,0.00,0.00,-0.01,0.01
+Compost K content,0.04,0.05,0.01,0.02,0.01
